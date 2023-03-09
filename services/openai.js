@@ -1,4 +1,4 @@
-const { Configuration, OpenAIApi } = require("openai")
+const { Configuration, OpenAIApi } = require('openai')
 
 const AI_MODELS = { // scoped to GPT3.5 
  turbo: 'gpt-3.5-turbo',
@@ -8,8 +8,8 @@ const AI_MODELS = { // scoped to GPT3.5
  davinciCode: 'code-davinci-002	'
  }
 
- let AiInstance
- let openAI
+let AiInstance
+let openAI
 
 const singletonAI = () => {
 
@@ -41,8 +41,8 @@ const askOpenAi = async(model, prompt, temperature, max_tokens) => {
 
     const openAI = singletonAI().getAIInstance()
     const response = await openAI.createCompletion({
-    model: `${model}`,
-    prompt: `${prompt}`,
+    model,
+    prompt,
     temperature,
     max_tokens,
     })
