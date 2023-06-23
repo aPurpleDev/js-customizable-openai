@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { Configuration, OpenAIApi } = require('openai')
+const { logResults } = require('../models/result-adapter')
 
 /** 
     @constant - list of available models scoped to GPT3.5 (need manual maintenance for now)
@@ -64,6 +65,8 @@ const askOpenAI = async(model, prompt, temperature, max_tokens) => {
     temperature,
     max_tokens,
     })
+
+    logResults(response?.data?.result)
 
     return response
 }
